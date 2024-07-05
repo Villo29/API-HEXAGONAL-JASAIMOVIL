@@ -22,7 +22,7 @@ export const loginUsuario = async (req: Request, res: Response) => {
     if (!usuario || usuario.contraseña !== contraseña) {
       return res.status(401).send({ error: 'Credenciales no válidas.' });
     }
-    const token = jwt.sign({ _id: usuario._id }, process.env.JWT_SECRET || 'your_secret_key', { expiresIn: '1h' });
+    const token = jwt.sign({ _id: usuario._id }, process.env.JWT_SECRET || 'your_secret_key',);
     res.send({ usuario, token });
   } catch (error) {
     res.status(400).send(error);
