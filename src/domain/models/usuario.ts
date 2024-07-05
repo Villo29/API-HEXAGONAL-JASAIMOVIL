@@ -5,6 +5,7 @@ export interface IUsuario extends Document {
   nombre: string;
   correo: string;
   contraseña: string;
+  telefono: string;
 }
 
 // Definir el esquema para el modelo Usuario
@@ -19,6 +20,10 @@ const usuarioSchema = new Schema<IUsuario>({
     unique: true,
   },
   contraseña: {
+    type: String,
+    required: true,
+  },
+  telefono: {
     type: String,
     required: true,
   },
