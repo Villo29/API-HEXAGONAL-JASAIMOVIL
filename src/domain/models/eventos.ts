@@ -1,10 +1,13 @@
+import { number } from "joi";
 import { Document, Schema, model } from "mongoose";
 
 export interface IEvento extends Document {
     nombre: string;
     descripcion: string;
     fecha: Date;
-    precio: String;
+    vip: number;
+    preferente: number;
+    general: number;
     genero: string;
     imagen: string;
     lugar: string;
@@ -26,10 +29,6 @@ const eventoSchema = new Schema<IEvento>({
         type: Date,
         required: true
     },
-    precio: {
-        type: String,
-        required: true
-    },
     genero: {
         type: String,
         required: true
@@ -45,6 +44,18 @@ const eventoSchema = new Schema<IEvento>({
     tipo: {
         type: String,
         required: true
+    },
+    vip: {
+        type: Number,
+        required:true
+    },
+    general: {
+        type: Number,
+        required:true,
+    },
+    preferente:{
+        type: Number,
+        required:true
     }
 });
 
