@@ -11,7 +11,6 @@ export interface IEvento extends Document {
     genero: string;
     imagen: string;
     lugar: string;
-    tipo: string;
 }
 
 //deficnicion del esquema
@@ -38,10 +37,6 @@ const eventoSchema = new Schema<IEvento>({
         required: true
     },
     lugar: {
-        type: String,
-        required: true
-    },
-    tipo: {
         type: String,
         required: true
     },
