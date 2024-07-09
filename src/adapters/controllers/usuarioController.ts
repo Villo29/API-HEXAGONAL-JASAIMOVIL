@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { ObjectId } from 'mongodb';
 import Usuario, { IUsuario } from '../../domain/models/usuario';
 import jwt from 'jsonwebtoken';
 
@@ -57,7 +58,7 @@ export const obtenerUsuarioPorId = async (req: Request, res: Response) => {
 // Actualizar un usuario por ID
 export const actualizarUsuario = async (req: Request, res: Response) => {
   const updates = Object.keys(req.body) as Array<keyof IUsuario>;
-  const allowedUpdates: Array<keyof IUsuario> = ['nombre', 'correo', 'contraseña'];
+  const allowedUpdates: Array<keyof IUsuario> = ['nombre', 'correo', 'contraseña', 'telefono'];
   const isValidOperation = updates.every((update) => allowedUpdates.includes(update));
 
   if (!isValidOperation) {
@@ -67,7 +68,7 @@ export const actualizarUsuario = async (req: Request, res: Response) => {
   try {
     const usuario = await Usuario.findById(req.params.id);
     if (!usuario) {
-      return res.status(404).send();
+      return res.status(404).send({ error: 'Usuario no encontrado' });
     }
 
     updates.forEach((update) => {

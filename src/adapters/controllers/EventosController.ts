@@ -33,7 +33,6 @@ export const obtenerEventosporID = async (req: Request, res: Response) => {
     if (!ObjectId.isValid(_id)) {
       return res.status(400).json({ message: 'ID no válido' });
     }
-  
     try {
       const evento: IEvento | null = await Evento.findById(new ObjectId(_id));
       if (!evento) {

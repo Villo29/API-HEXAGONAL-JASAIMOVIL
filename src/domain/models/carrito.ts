@@ -4,7 +4,7 @@ import { Schema, Document, model } from "mongoose";
 export interface ICarrito extends Document {
   precio: number;
   tipo: string;
-  userId: string; // Puedes usar string para almacenar el ID del usuario
+  userId: string;
 }
 
 // Definir el esquema para el modelo Carrito

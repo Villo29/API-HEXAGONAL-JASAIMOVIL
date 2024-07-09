@@ -3,7 +3,7 @@
   "version": "1.0.0",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/infrastructure/index.ts",
+    "start": "nodemon --exec ts-node src/infrastructure/index.ts",
     "dev": "nodemon --exec ts-node src/infrastructure/index.ts"
   },
   "keywords": [],
