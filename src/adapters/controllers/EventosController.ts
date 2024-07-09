@@ -1,5 +1,6 @@
 import { Request, Response } from "express";
 import Evento, { IEvento } from "../../domain/models/eventos";
+import { RequestStatus } from "aws-sdk/clients/servicequotas";
 
 
 // Crear un nuevo evento
@@ -24,3 +25,17 @@ export const obtenerEventos = async (req: Request, res: Response) => {
         return res.status(500).json({ message: 'Error al obtener los eventos', error });
     }
 };
+
+
+export const obtenerEventosporID = async (req: Request, res:Response) =>{
+   const _id = req.params._id;
+   try{
+    const evento: IEvento | null =  await Evento.findById(_id)
+    if(!evento) {
+        return res.status(404).json({ message: 'Evento no encontrado' }); // Use res.status(404).json to send a not found error with status code 404
+    }
+   }
+   catch (error) {
+       return res.status(500).json({ message: 'Error al obtener el evento por ID', error }); // Use res.status(500).json to send an internal server error with status code 500
+   }
+}
