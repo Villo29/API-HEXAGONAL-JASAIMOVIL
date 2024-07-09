@@ -16,7 +16,7 @@ router.delete('/usuarios/:id', authMiddleware, eliminarUsuario);
 router.post('/usuarios/login', loginUsuario);
 router.post('/eventos', crearEvento);
 router.get('/eventos', obtenerEventos);
-router.get('/evento/:id', obtenerEventosporID);
+router.get('/eventos/:id',obtenerEventosporID);
 
 router.use('/', CarritoRouter);
 
