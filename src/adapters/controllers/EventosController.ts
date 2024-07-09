@@ -27,15 +27,15 @@ export const obtenerEventos = async (req: Request, res: Response) => {
 };
 
 
-export const obtenerEventosporID = async (req: Request, res:Response) =>{
-   const _id = req.params._id;
-   try{
-    const evento: IEvento | null =  await Evento.findById(_id)
-    if(!evento) {
-        return res.status(404).json({ message: 'Evento no encontrado' }); // Use res.status(404).json to send a not found error with status code 404
+export const obtenerEventosporID = async (req: Request, res: Response) => {
+    const _id = req.params._id; // Asegúrate de que params._id es correcto. Usualmente es params.id
+    try {
+      const evento: IEvento | null = await Evento.findById(_id);
+      if (!evento) {
+        return res.status(404).json({ message: 'Evento no encontrado' });
+      }
+      return res.status(200).json(evento); // Responde con el evento encontrado
+    } catch (error) {
+      return res.status(500).json({ message: 'Error al obtener el evento por ID', error });
     }
-   }
-   catch (error) {
-       return res.status(500).json({ message: 'Error al obtener el evento por ID', error }); // Use res.status(500).json to send an internal server error with status code 500
-   }
-}
+  };
