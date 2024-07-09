@@ -2,7 +2,7 @@ import { Router } from 'express';
 import { crearUsuario, obtenerUsuarios, obtenerUsuarioPorId, actualizarUsuario, eliminarUsuario, loginUsuario } from '../controllers/usuarioController';
 import { validarUsuario } from '../middlewares/validarUsuario';
 import { authMiddleware } from '../middlewares/authMiddleware';
-import { crearEvento, obtenerEventos } from '../controllers/EventosController';
+import { crearEvento, obtenerEventos, obtenerEventosporID } from '../controllers/EventosController';
 import CarritoRouter from './carrito';
 
 
@@ -16,6 +16,7 @@ router.delete('/usuarios/:id', authMiddleware, eliminarUsuario);
 router.post('/usuarios/login', loginUsuario);
 router.post('/eventos', crearEvento);
 router.get('/eventos', obtenerEventos);
+router.get('/evento/:id', obtenerEventosporID);
 
 router.use('/', CarritoRouter);
 
