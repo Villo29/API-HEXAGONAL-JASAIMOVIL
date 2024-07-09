@@ -4,7 +4,7 @@ export interface IEvento extends Document {
     nombre: string;
     descripcion: string;
     fecha: Date;
-    precio: number;
+    precio: String;
     genero: string;
     imagen: string;
     lugar: string;
@@ -27,7 +27,7 @@ const eventoSchema = new Schema<IEvento>({
         required: true
     },
     precio: {
-        type: Number,
+        type: String,
         required: true
     },
     genero: {
